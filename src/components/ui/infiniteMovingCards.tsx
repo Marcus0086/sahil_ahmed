@@ -13,7 +13,7 @@ export const InfiniteMovingCards = ({
 }: {
   items: {
     title: string;
-    link?: string;
+    image: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -82,15 +82,17 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
-            className="w-[400px] h-[300px] rounded-lg md:h-[400px] max-w-full relative border border-b-0 flex-shrink-0 px-8 py-6 md:w-[600px] overflow-hidden group cursor-pointer"
+            className="w-[400px] h-[300px] rounded-lg md:h-[400px] max-w-full relative border border-b-0 flex-shrink-0 px-8 py-6 md:w-[600px] overflow-hidden group cursor-pointer object-contain"
             key={item.title}
           >
             <Image
-              src={`https://source.unsplash.com/random/800x800?sig=${idx}`}
+              loading="lazy"
+              quality={70}
+              src={item.image}
               alt={item.title}
-              className="scale-100 group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full"
+              className="scale-100 group-hover:scale-110 transition-transform duration-150 ease-in-out w-full h-full"
               fill
             />
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 flex items-center justify-center">
