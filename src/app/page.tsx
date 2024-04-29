@@ -1,7 +1,7 @@
-import DemoOne from "@/components/demoOne";
+import HomePage from "@/components/homePage";
 
 const Home = () => {
-  return <DemoOne />;
+  return <HomePage />;
 };
 
 export default Home;
