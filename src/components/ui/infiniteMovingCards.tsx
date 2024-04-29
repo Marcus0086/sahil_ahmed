@@ -84,7 +84,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="w-[400px] h-[300px] rounded-lg md:h-[400px] max-w-full relative border border-b-0 flex-shrink-0 px-8 py-6 md:w-[600px] overflow-hidden group"
+            className="w-[400px] h-[300px] rounded-lg md:h-[400px] max-w-full relative border border-b-0 flex-shrink-0 px-8 py-6 md:w-[600px] overflow-hidden group cursor-pointer"
             key={item.title}
           >
             <Image
@@ -93,8 +93,7 @@ export const InfiniteMovingCards = ({
               className="scale-100 group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full"
               fill
             />
-            <div className="absolute bg-blue-500 opacity-0 group-hover:opacity-60 transition-opacity duration-500 ease-in-out flex items-center justify-center inset-0" />
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 flex items-center justify-center">
               <h3 className="text-white text-2xl md:text-4xl font-bold">
                 {item.title}
               </h3>
