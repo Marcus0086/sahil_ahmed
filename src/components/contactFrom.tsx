@@ -105,7 +105,7 @@ const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
             <div className="w-full flex items-center justify-end gap-12">
               <div
                 id="calendly-inline-widget"
-                className="calendly-inline-widget w-full xl:w-[575px] h-[670px] bg-black order-2"
+                className="w-full xl:w-[575px] h-[670px] bg-black order-2"
               />
               {fullscreen ? (
                 <div className="hidden md:flex text-start items-start justify-center flex-col w-3/6">
@@ -125,7 +125,8 @@ const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
       </section>
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="afterInteractive"
+        type="text/javascript"
+        async
       />
     </>
   );
