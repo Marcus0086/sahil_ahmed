@@ -1,4 +1,7 @@
+"use client";
+
 import Script from "next/script";
+import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -8,6 +11,17 @@ import { SparklesCore } from "./ui/sparkles";
 import { cn } from "@/lib/utils";
 
 const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
+  useEffect(() => {
+    // Reinitialize Calendly embed when link changes
+    // @ts-ignore - Calendly is not defined in window
+    if (document && window.Calendly) {
+      // @ts-ignore - Calendly is not defined in window
+      window.Calendly.initInlineWidget({
+        url: "https://calendly.com/raghav_tars/30min",
+        parentElement: document.getElementById("calendly-inline-widget"),
+      });
+    }
+  }, []);
   return (
     <>
       <section className="mt-12 pb-20 md:mt-36 px-4 h-full items-center justify-center flex flex-col">
@@ -90,8 +104,9 @@ const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
             </div>
             <div className="w-full flex items-center justify-end gap-12">
               <div
-                className="calendly-inline-widget w-full xl:w-[575px] h-[670px] bg-black order-2"
-                data-url="https://calendly.com/raghav_tars/30min"
+                id="calendly-inline-widget"
+                className="w-full xl:w-[575px] h-[670px] bg-black order-2"
+                data-auto-load="false"
               />
               {fullscreen ? (
                 <div className="hidden md:flex text-start items-start justify-center flex-col w-3/6">
