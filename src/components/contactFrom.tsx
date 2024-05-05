@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SparklesCore } from "./ui/sparkles";
 import { cn } from "@/lib/utils";
+import { useServerInsertedHTML } from "next/navigation";
 
 const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
   useEffect(() => {
@@ -22,6 +23,18 @@ const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
       });
     }
   }, []);
+
+  useServerInsertedHTML(() => {
+    return (
+      <>
+        <script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          type="text/javascript"
+          async
+        />
+      </>
+    );
+  });
   return (
     <>
       <section className="mt-12 pb-20 md:mt-36 px-4 h-full items-center justify-center flex flex-col">
@@ -123,11 +136,6 @@ const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
           </div>
         </div>
       </section>
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        type="text/javascript"
-        async
-      />
     </>
   );
 };
