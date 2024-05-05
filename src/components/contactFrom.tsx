@@ -5,8 +5,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SparklesCore } from "./ui/sparkles";
+import { cn } from "@/lib/utils";
 
-const ContactFrom = ({ includes }: { includes?: "calendy" | "hubspot" }) => {
+const ContactFrom = ({ fullscreen }: { fullscreen?: boolean }) => {
   return (
     <>
       <section className="mt-12 pb-20 md:mt-36 px-4 h-full items-center justify-center flex flex-col">
@@ -33,11 +34,12 @@ const ContactFrom = ({ includes }: { includes?: "calendy" | "hubspot" }) => {
           <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
         </div>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center justify-center">
-            <div
-              className="calendly-inline-widget w-full xl:w-[575px] h-[670px] bg-black"
-              data-url="https://calendly.com/raghav_tars/30min"
-            />
+          <div
+            className={cn(
+              "grid gap-8 items-center justify-center",
+              fullscreen ? "grid-cols-1 gap-12" : "grid-cols-1 xl:grid-cols-2"
+            )}
+          >
             <div>
               <h2 className="text-3xl font-bold mb-4">
                 {"Let's"} get to know each other
@@ -85,6 +87,24 @@ const ContactFrom = ({ includes }: { includes?: "calendy" | "hubspot" }) => {
                   Submit
                 </Button>
               </form>
+            </div>
+            <div className="w-full flex items-center justify-end gap-12">
+              <div
+                className="calendly-inline-widget w-full xl:w-[575px] h-[670px] bg-black order-2"
+                data-url="https://calendly.com/raghav_tars/30min"
+              />
+              {fullscreen ? (
+                <div className="hidden md:flex text-start items-start justify-center flex-col w-3/6">
+                  <h2 className="text-5xl font-bold mb-4">
+                    Book a 5 minute meeting with us
+                  </h2>
+                  <p className="text-center text-gray-400 mt-4 text-3xl font-bold">
+                    To get into world of opportunities
+                  </p>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>

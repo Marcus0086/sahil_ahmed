@@ -29,7 +29,7 @@ const Nav = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-sm rounded-b-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link className="text-white font-bold text-2xl" href="#">
+        <Link className="text-white font-bold text-2xl" href="/">
           Summit Media
         </Link>
         <nav className="hidden md:flex items-center space-x-4">
